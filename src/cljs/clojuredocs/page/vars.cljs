@@ -86,7 +86,7 @@
            [:pre "lorem ipsum"]]) (range 5))])
 
 
-(defn meta-page
+(defn var-page
   []
   [:div.container
    [:div.box.m-4.columns
