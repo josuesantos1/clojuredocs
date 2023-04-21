@@ -3,7 +3,7 @@
     [clojure.string :as string]
     [clojuredocs.ajax :as ajax]
     [clojuredocs.events]
-    [clojuredocs.page.meta :refer [meta-page]]
+    [clojuredocs.page.vars :refer [meta-page]]
     [day8.re-frame.http-fx]
     [goog.events :as events]
     [goog.history.EventType :as HistoryEventType]

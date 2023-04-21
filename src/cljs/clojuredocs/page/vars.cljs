@@ -99,7 +99,7 @@
        [:div
         [:strong.tag.is-info.is-light.mx-2 (:file a)]
         [:strong.tag.is-info.is-light.mx-2 (:arglists a)]
-        [:strong.tag.is-info.is-light.mx-2 (:added a)]]
+        [:strong.tag.is-info.is-light.mx-2 "adicionado em:" (:added a)]]
        [:hr]
        [:pre
         (:doc a)]
