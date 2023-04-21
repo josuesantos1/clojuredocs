@@ -1,26 +1,32 @@
 (ns clojuredocs.core
   (:require
+    [clojure.string :as string]
+    [clojuredocs.ajax :as ajax]
+    [clojuredocs.events]
+    [clojuredocs.page.meta :refer [meta-page]]
     [day8.re-frame.http-fx]
-    [reagent.dom :as rdom]
-    [reagent.core :as r]
-    [re-frame.core :as rf]
     [goog.events :as events]
     [goog.history.EventType :as HistoryEventType]
     [markdown.core :refer [md->html]]
-    [clojuredocs.ajax :as ajax]
-    [clojuredocs.events]
+    [re-frame.core :as rf]
+    [reagent.core :as r]
+    [reagent.dom :as rdom]
     [reitit.core :as reitit]
-    [reitit.frontend.easy :as rfe]
-    [clojure.string :as string])
-  (:import goog.History))
+    [reitit.frontend.easy :as rfe])
+  (:import
+    goog.History))
 
-(defn nav-link [uri title page]
+
+(defn nav-link
+  [uri title page]
   [:a.navbar-item
    {:href   uri
     :class (when (= page @(rf/subscribe [:common/page-id])) :is-active)}
    title])
 
-(defn navbar [] 
+
+(defn navbar
+  []
   (r/with-let [expanded? (r/atom false)]
               [:nav.navbar.is-info>div.container
                [:div.navbar-brand
@@ -29,30 +35,39 @@
                  {:data-target :nav-menu
                   :on-click #(swap! expanded? not)
                   :class (when @expanded? :is-active)}
-                 [:span][:span][:span]]]
+                 [:span] [:span] [:span]]]
                [:div#nav-menu.navbar-menu
                 {:class (when @expanded? :is-active)}
                 [:div.navbar-start
                  [nav-link "#/" "Home" :home]
                  [nav-link "#/about" "About" :about]]]]))
 
-(defn about-page []
+
+(defn about-page
+  []
   [:section.section>div.container>div.content
    [:img {:src "/img/warning_clojure.png"}]])
 
-(defn home-page []
+
+(defn home-page
+  []
   [:section.section>div.container>div.content
    (when-let [docs @(rf/subscribe [:docs])]
      [:div {:dangerouslySetInnerHTML {:__html (md->html docs)}}])])
 
-(defn page []
+
+(defn page
+  []
   (if-let [page @(rf/subscribe [:common/page])]
     [:div
      [navbar]
      [page]]))
 
-(defn navigate! [match _]
+
+(defn navigate!
+  [match _]
   (rf/dispatch [:common/navigate match]))
+
 
 (def router
   (reitit/router
@@ -60,21 +75,29 @@
            :view        #'home-page
            :controllers [{:start (fn [_] (rf/dispatch [:page/init-home]))}]}]
      ["/about" {:name :about
-                :view #'about-page}]]))
+                :view #'about-page}]
+     ["/vars" {:name :vars
+               :view #'meta-page}]]))
 
-(defn start-router! []
+
+(defn start-router!
+  []
   (rfe/start!
     router
     navigate!
     {}))
 
+
 ;; -------------------------
 ;; Initialize app
-(defn ^:dev/after-load mount-components []
+(defn ^:dev/after-load mount-components
+  []
   (rf/clear-subscription-cache!)
   (rdom/render [#'page] (.getElementById js/document "app")))
 
-(defn init! []
+
+(defn init!
+  []
   (start-router!)
   (ajax/load-interceptors!)
   (mount-components))
