@@ -1,5 +1,6 @@
 (ns clojuredocs.components.sidebar)
 
+
 (defn sidebar
   []
   [:aside.menu.box.column.is-3

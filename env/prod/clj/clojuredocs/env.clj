@@ -1,5 +1,7 @@
 (ns clojuredocs.env
-  (:require [clojure.tools.logging :as log]))
+  (:require
+    [clojure.tools.logging :as log]))
+
 
 (def defaults
   {:init

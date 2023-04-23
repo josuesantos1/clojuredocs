@@ -1,17 +1,19 @@
 (ns clojuredocs.routes.home
   (:require
-   [clojuredocs.layout :as layout]
-   [clojure.java.io :as io]
-   [clojuredocs.middleware :as middleware]
-   [ring.util.response]
-   [ring.util.http-response :as response]))
+    [clojure.java.io :as io]
+    [clojuredocs.layout :as layout]
+    [clojuredocs.middleware :as middleware]
+    [ring.util.http-response :as response]
+    [ring.util.response]))
 
 
-
-(defn home-page [request]
+(defn home-page
+  [request]
   (layout/render request "home.html"))
 
-(defn home-routes []
+
+(defn home-routes
+  []
   [""
    {:middleware [middleware/wrap-csrf
                  middleware/wrap-formats]}

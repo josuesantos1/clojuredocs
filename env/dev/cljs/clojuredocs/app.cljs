@@ -1,14 +1,16 @@
 (ns ^:dev/once clojuredocs.app
   (:require
-    [clojuredocs.core :as core]
     [cljs.spec.alpha :as s]
-    [expound.alpha :as expound]
-    [devtools.core :as devtools]))
+    [clojuredocs.core :as core]
+    [devtools.core :as devtools]
+    [expound.alpha :as expound]))
+
 
 (extend-protocol IPrintWithWriter
   js/Symbol
   (-pr-writer [sym writer _]
     (-write writer (str "\"" (.toString sym) "\""))))
+
 
 (set! s/*explain-out* expound/printer)
 
