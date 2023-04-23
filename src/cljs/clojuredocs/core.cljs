@@ -3,6 +3,7 @@
     [clojure.string :as string]
     [clojuredocs.ajax :as ajax]
     [clojuredocs.events]
+    [clojuredocs.page.namespace :refer [namespace-page]]
     [clojuredocs.page.vars :refer [var-page]]
     [day8.re-frame.http-fx]
     [goog.events :as events]
@@ -77,7 +78,9 @@
      ["/about" {:name :about
                 :view #'about-page}]
      ["/vars" {:name :vars
-               :view #'var-page}]]))
+               :view #'var-page}]
+     ["/namespace" {:name :namespace
+                    :view #'namespace-page}]]))
 
 
 (defn start-router!
