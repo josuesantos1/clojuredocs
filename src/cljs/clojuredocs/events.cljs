@@ -115,8 +115,10 @@
 (rf/reg-sub
  :namespace/content
  (fn [db _]
-   {:file "clojure/core.clj",
-    :doc "Returns a lazy sequence consisting of the result of applying f to\n  the set of first items of each coll, followed by applying f to the\n  set of second items in each coll, until any one of the colls is\n  exhausted.  Any remaining items in other colls are ignored. Function\n  f should accept number-of-colls arguments. Returns a transducer when\n  no collection is provided."
+   {:namespace "clojure/core.clj"
+    :doc "Fundamental library of the Clojure language"
+    :description "The largest of the core namespaces, clojure.core provides the bulk of the functionality you'll be using to build Clojure programs.
+There are too many core functions to feature here, but take a look at the quickref to get a breakdown by conceptual arena."
     :vars [{:title "*^%"
             :vars [{:name "*"
                     :doc "Returns the product of nums. (*) returns 1. Does not auto-promote longs, will throw on overflow. See also:"}
