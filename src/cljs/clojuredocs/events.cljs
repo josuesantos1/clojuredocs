@@ -93,4 +93,20 @@
 (rf/reg-sub
   :var/content
   (fn [db _]
-    (:var/content db)))
+    {:added "1.0",
+     :name 'map,
+     :file "clojure/core.clj",
+     :arglists "([f] [f coll] [f c1 c2] [f c1 c2 c3] [f c1 c2 c3 & colls])"
+     :doc "Returns a lazy sequence consisting of the result of applying f to\n  the set of first items of each coll, followed by applying f to the\n  set of second items in each coll, until any one of the colls is\n  exhausted.  Any remaining items in other colls are ignored. Function\n  f should accept number-of-colls arguments. Returns a transducer when\n  no collection is provided."
+     :comment [{:name "john doe"
+                :content "comment"
+                :id 1}
+               {:name "john doe"
+                :content "comment"
+                :id 2}]
+     :example [{:name "john doe"
+                :content "(map inc [1 2 3 4 5])"
+                :id 1}
+               {:name "john doe"
+                :content "(map inc [1 2 3 4 5])"
+                :id 2}]}))
