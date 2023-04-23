@@ -113,19 +113,19 @@
 
 
 (rf/reg-sub
- :namespace/content
- (fn [db _]
-   {:namespace "clojure/core.clj"
-    :doc "Fundamental library of the Clojure language"
-    :description "The largest of the core namespaces, clojure.core provides the bulk of the functionality you'll be using to build Clojure programs.
+  :namespace/content
+  (fn [db _]
+    {:namespace "clojure/core.clj"
+     :doc "Fundamental library of the Clojure language"
+     :description "The largest of the core namespaces, clojure.core provides the bulk of the functionality you'll be using to build Clojure programs.
 There are too many core functions to feature here, but take a look at the quickref to get a breakdown by conceptual arena."
-    :vars [{:title "*^%"
-            :vars [{:name "*"
-                    :doc "Returns the product of nums. (*) returns 1. Does not auto-promote longs, will throw on overflow. See also:"}
-                   {:name "*'"
-                    :doc "Returns the product of nums. (*') returns 1. Supports arbitrary precision. See also: *"}]}
-           {:title "a"
-            :vars [{:name "accessor"
-                    :doc "Returns a fn that, given an instance of a structmap with the basis, returns the value at the key. The key must be in the basis. The returned function should be (slightly) more efficient than using get, but such use of accessors should be limited to known performance-critical areas."}
-                   {:name "aclone"
-                    :doc "Returns a clone of the Java array. Works on arrays of known types."}]}]}))
+     :vars [{:title "*^%"
+             :vars [{:name "*"
+                     :doc "Returns the product of nums. (*) returns 1. Does not auto-promote longs, will throw on overflow. See also:"}
+                    {:name "*'"
+                     :doc "Returns the product of nums. (*') returns 1. Supports arbitrary precision. See also: *"}]}
+            {:title "a"
+             :vars [{:name "accessor"
+                     :doc "Returns a fn that, given an instance of a structmap with the basis, returns the value at the key. The key must be in the basis. The returned function should be (slightly) more efficient than using get, but such use of accessors should be limited to known performance-critical areas."}
+                    {:name "aclone"
+                     :doc "Returns a clone of the Java array. Works on arrays of known types."}]}]}))
