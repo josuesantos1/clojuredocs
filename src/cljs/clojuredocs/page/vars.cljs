@@ -30,7 +30,6 @@
 (defn var-page
   []
   (let [content @(rf/subscribe [:var/content])]
-    (println content)
     [:div.container
      [:div.box.m-4.columns
       [sidebar]

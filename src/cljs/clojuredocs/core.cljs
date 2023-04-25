@@ -3,6 +3,7 @@
     [clojure.string :as string]
     [clojuredocs.ajax :as ajax]
     [clojuredocs.events]
+    [clojuredocs.page.home :refer [home-page]]
     [clojuredocs.page.namespace :refer [namespace-page]]
     [clojuredocs.page.vars :refer [var-page]]
     [day8.re-frame.http-fx]
@@ -48,13 +49,6 @@
   []
   [:section.section>div.container>div.content
    [:img {:src "/img/warning_clojure.png"}]])
-
-
-(defn home-page
-  []
-  [:section.section>div.container>div.content
-   (when-let [docs @(rf/subscribe [:docs])]
-     [:div {:dangerouslySetInnerHTML {:__html (md->html docs)}}])])
 
 
 (defn page
