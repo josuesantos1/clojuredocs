@@ -1,5 +1,6 @@
 (ns clojuredocs.schema.example)
 
+
 (def example
   [{:db/ident       :example/id
     :db/valueType   :db.type/uuid

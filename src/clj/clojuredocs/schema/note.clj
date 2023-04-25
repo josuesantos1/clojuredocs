@@ -1,5 +1,6 @@
 (ns clojuredocs.schema.note)
 
+
 (def note
   [{:db/ident       :note/id
     :db/valueType   :db.type/uuid

@@ -1,5 +1,6 @@
 (ns clojuredocs.schema.user)
 
+
 (def user
   [{:db/ident       :user/id
     :db/valueType   :db.type/uuid

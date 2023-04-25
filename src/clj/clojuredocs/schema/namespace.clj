@@ -1,5 +1,6 @@
 (ns clojuredocs.schema.namespace)
 
+
 (def namespace*
   [{:db/ident       :namespace/id
     :db/valueType   :db.type/uuid
