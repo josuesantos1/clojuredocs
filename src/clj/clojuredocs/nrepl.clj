@@ -1,8 +1,7 @@
 (ns clojuredocs.nrepl
   (:require
-    [clojure.tools.logging :as log]
-    [nrepl.server :as nrepl]))
-
+   [clojure.tools.logging :as log]
+   [nrepl.server :as nrepl]))
 
 (defn start
   "Start a network repl for debugging on specified port followed by
@@ -22,7 +21,6 @@
     (catch Throwable t
       (log/error t "failed to start nREPL")
       (throw t))))
-
 
 (defn stop
   [server]

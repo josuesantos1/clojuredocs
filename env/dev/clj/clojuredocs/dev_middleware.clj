@@ -1,10 +1,9 @@
 (ns clojuredocs.dev-middleware
   (:require
-    [clojuredocs.config :refer [env]]
-    [prone.middleware :refer [wrap-exceptions]]
-    [ring.middleware.reload :refer [wrap-reload]]
-    [selmer.middleware :refer [wrap-error-page]]))
-
+   [clojuredocs.config :refer [env]]
+   [prone.middleware :refer [wrap-exceptions]]
+   [ring.middleware.reload :refer [wrap-reload]]
+   [selmer.middleware :refer [wrap-error-page]]))
 
 (defn wrap-dev
   [handler]

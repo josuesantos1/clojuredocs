@@ -1,3 +1,1 @@
-(ns clojuredocs.validation
-  (:require
-    [struct.core :as st]))
+(ns clojuredocs.validation)

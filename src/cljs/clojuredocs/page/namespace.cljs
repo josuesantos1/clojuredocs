@@ -1,8 +1,7 @@
 (ns clojuredocs.page.namespace
   (:require
-    [clojuredocs.components.sidebar :refer [sidebar]]
-    [re-frame.core :as rf]))
-
+   [clojuredocs.components.sidebar :refer [sidebar]]
+   [re-frame.core :as rf]))
 
 (defn vars
   [data]
@@ -15,7 +14,6 @@
                   [:div.is-flex.columns.py-2
                    [:a.column.is-2 (:name var*)]
                    [:pre (:doc var*)]]) (:vars vars*))]) data)])
-
 
 (defn namespace-page
   []

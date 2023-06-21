@@ -1,16 +1,14 @@
 (ns clojuredocs.routes.home
   (:require
-    [clojure.java.io :as io]
-    [clojuredocs.layout :as layout]
-    [clojuredocs.middleware :as middleware]
-    [ring.util.http-response :as response]
-    [ring.util.response]))
-
+   [clojure.java.io :as io]
+   [clojuredocs.layout :as layout]
+   [clojuredocs.middleware :as middleware]
+   [ring.util.http-response :as response]
+   [ring.util.response]))
 
 (defn home-page
   [request]
   (layout/render request "home.html"))
-
 
 (defn home-routes
   []

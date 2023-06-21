@@ -1,6 +1,5 @@
 (ns clojuredocs.schema.var)
 
-
 (def var*
   [{:db/ident       :vars/id
     :db/valueType   :db.type/uuid

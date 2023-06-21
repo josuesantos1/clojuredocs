@@ -1,15 +1,13 @@
 (ns clojuredocs.db.core
   (:require
-    [clojuredocs.config :refer [env]]
-    [datomic.api :as d]
-    [io.rkn.conformity :as c]
-    [mount.core :refer [defstate]]))
-
+   [clojuredocs.config :refer [env]]
+   [datomic.api :as d]
+   [io.rkn.conformity :as c]
+   [mount.core :refer [defstate]]))
 
 (defstate conn
   :start (do (-> env :database-url d/create-database) (-> env :database-url d/connect))
   :stop (-> conn .release))
-
 
 (defn install-schema
   "This function expected to be called at system start up.
@@ -19,7 +17,6 @@
   [conn]
   (let [norms-map (c/read-resource "migrations/schema.edn")]
     (c/ensure-conforms conn norms-map (keys norms-map))))
-
 
 (defn show-schema
   "Show currently installed schema"
@@ -36,7 +33,6 @@
            [((comp not contains?) ?system-ns ?ns)]]
          (d/db conn) system-ns)))
 
-
 (defn show-transaction
   "Show all the transaction data
    e.g.
@@ -44,7 +40,6 @@
     => the number of transaction"
   [conn]
   (seq (d/tx-range (d/log conn) nil nil)))
-
 
 (defn add-user
   "e.g.
@@ -57,7 +52,6 @@
                       :user/name       screen-name
                       :user/status     status
                       :user/email      email}]))
-
 
 (defn find-one-by
   "Given db value and an (attr/val), return the user as EntityMap (datomic.query.EntityMap)
@@ -75,7 +69,6 @@
                    :in $ ?attr ?val
                    :where [?e ?attr ?val]]
                  db attr val)))
-
 
 (defn find-user
   [db id]

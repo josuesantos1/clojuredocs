@@ -1,32 +1,29 @@
 (ns clojuredocs.layout
   (:require
-    [clojure.java.io]
-    [markdown.core :refer [md-to-html-string]]
-    [ring.middleware.anti-forgery :refer [*anti-forgery-token*]]
-    [ring.util.anti-forgery :refer [anti-forgery-field]]
-    [ring.util.http-response :refer [content-type ok]]
-    [ring.util.response]
-    [selmer.filters :as filters]
-    [selmer.parser :as parser]))
-
+   [clojure.java.io]
+   [markdown.core :refer [md-to-html-string]]
+   [ring.middleware.anti-forgery :refer [*anti-forgery-token*]]
+   [ring.util.anti-forgery :refer [anti-forgery-field]]
+   [ring.util.http-response :refer [content-type ok]]
+   [ring.util.response]
+   [selmer.filters :as filters]
+   [selmer.parser :as parser]))
 
 (parser/set-resource-path!  (clojure.java.io/resource "html"))
 (parser/add-tag! :csrf-field (fn [_ _] (anti-forgery-field)))
 (filters/add-filter! :markdown (fn [content] [:safe (md-to-html-string content)]))
 
-
 (defn render
   "renders the HTML template located relative to resources/html"
   [request template & [params]]
   (content-type
-    (ok
-      (parser/render-file
-        template
-        (assoc params
-               :page template
-               :csrf-token *anti-forgery-token*)))
-    "text/html; charset=utf-8"))
-
+   (ok
+    (parser/render-file
+     template
+     (assoc params
+            :page template
+            :csrf-token *anti-forgery-token*)))
+   "text/html; charset=utf-8"))
 
 (defn error-page
   "error-details should be a map containing the following keys:

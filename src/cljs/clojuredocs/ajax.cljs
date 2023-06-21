@@ -1,15 +1,12 @@
 (ns clojuredocs.ajax
   (:require
-    [ajax.core :as ajax]
-    [cognitect.transit :as transit]
-    [luminus-transit.time :as time]
-    [re-frame.core :as rf]))
-
+   [ajax.core :as ajax]
+   [cognitect.transit :as transit]
+   [luminus-transit.time :as time]))
 
 (defn local-uri?
   [{:keys [uri]}]
   (not (re-find #"^\w+?://" uri)))
-
 
 (defn default-headers
   [request]
@@ -18,17 +15,15 @@
         (update :headers #(merge {"x-csrf-token" js/csrfToken} %)))
     request))
 
-
 ;; injects transit serialization config into request options
 
 (defn as-transit
   [opts]
   (merge {:format          (ajax/transit-request-format
-                             {:writer (transit/writer :json time/time-serialization-handlers)})
+                            {:writer (transit/writer :json time/time-serialization-handlers)})
           :response-format (ajax/transit-response-format
-                             {:reader (transit/reader :json time/time-deserialization-handlers)})}
+                            {:reader (transit/reader :json time/time-deserialization-handlers)})}
          opts))
-
 
 (defn load-interceptors!
   []

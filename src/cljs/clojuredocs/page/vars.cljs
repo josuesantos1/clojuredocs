@@ -1,8 +1,7 @@
 (ns clojuredocs.page.vars
   (:require
-    [clojuredocs.components.sidebar :refer [sidebar]]
-    [re-frame.core :as rf]))
-
+   [clojuredocs.components.sidebar :refer [sidebar]]
+   [re-frame.core :as rf]))
 
 (defn example
   [data]
@@ -25,7 +24,6 @@
            [:strong (:name comment*)]
            [:hr]
            [:pre "lorem ipsum"]]) data)])
-
 
 (defn var-page
   []

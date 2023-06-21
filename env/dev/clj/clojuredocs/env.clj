@@ -1,9 +1,8 @@
 (ns clojuredocs.env
   (:require
-    [clojure.tools.logging :as log]
-    [clojuredocs.dev-middleware :refer [wrap-dev]]
-    [selmer.parser :as parser]))
-
+   [clojure.tools.logging :as log]
+   [clojuredocs.dev-middleware :refer [wrap-dev]]
+   [selmer.parser :as parser]))
 
 (def defaults
   {:init
